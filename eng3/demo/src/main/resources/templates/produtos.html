@@ -1,0 +1,152 @@
+<!DOCTYPE >
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8"/>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
+	
+	</head>
+	<body>
+	
+		
+	
+	<div th:replace="~{menu :: menu}">
+	</div>
+	<div class ="container  ">
+	
+	
+	
+
+	
+	<div  class="card  shadow-lg p-3 mb-5 bg-body rounded M-5">
+	
+	 <div class="container-fluid ">
+   	
+    <form class="d-flex MT-3" role="search" th:object="${buscaNome}"  action="/produtos/buscaNome" method="GET">
+      <input class="form-control me-1" placeholder="Search"  name="buscaNome">
+      <button class="btn btn-success" type="submit">Search</button>
+    </form>
+ 
+	
+	
+	
+	<div th:replace="~{ModalCadastroProduto :: Modalss}">
+	
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+
+	
+<!-- lista  -->
+	<div class="container  P-5">
+  		
+		
+		<div  class="card bg-light border-dark mb-5  col "  th:each ="Produtos : ${produtos}">
+		
+		
+		
+		<!-- deixa o head colorido com base na quantidade disponivel no estoque -->
+		
+			<div th:if="${Produtos.quantidadeEstoque <= 10}" class="card-header alert alert-danger d-flex align-items-center" ><h5 class="alert-heading fs-4" th:text="${Produtos.nomeProduto}">nomeProduto</h5>
+			</div>					
+			<div th:if="${Produtos.quantidadeEstoque >= 11 and Produtos.quantidadeEstoque <=99}" class="card-header alert alert-warning " ><h5 class="alert-heading fs-4" th:text="${Produtos.nomeProduto}">nomeProduto</h5></div>
+	
+			<div th:if="${Produtos.quantidadeEstoque >= 100}" class="card-header alert alert-success" ><h5 class="alert-heading fs-4" th:text="${Produtos.nomeProduto}">nomeProduto</h5></div>
+
+			
+		
+		
+		<!-- colore a head  -->
+		
+			
+				<div class ="card-body bg-light text-dark " >
+					<div class="row">
+					<div class="col-9">
+					<div class="row ">
+					</div>
+					<div class="row">
+						<div class="col-6 mt-2"><p class="fs-6">TIPO: <B><span  th:text="${Produtos.tipo}"></span></B></p></div>
+						<div class="col-6 mt-2"><p class="fs-6">COMPOSTO: <b><span  th:text="${Produtos.composto}"></span></b></p></div>
+						
+					</div>		
+					<div class="row">
+						<div class="col-6 mt-2"><p class="fs-6">CATEGORIA: <b><span  th:text="${Produtos.categoria}" ></span></b></p></div>
+						<div class="col-6 mt-2"><p class="fs-6">VALOR: <b>R$ <span  th:text="${Produtos.valorVenda}" ></span></b></p></div>
+						
+					</div>
+					
+					<div class="row">
+						<div class="col-5 mt-2"><p class="fs-6">TAMANHO: <B><span  th:text="${Produtos.tamanho}" ></span></B></p></div>
+						<div class="col-4 mt-2"><p class="fs-6">EMBALAGEM: <B><span  th:text="${Produtos.embalagem}" ></span></B></p></div>
+						<div class="col-3 mt-2"><p class="fs-6">SABOR: <B><span  th:text="${Produtos.sabor}" ></span></B></p></div>
+						
+					
+				<div class="row">		
+    			 <div class="col-6 mt-2"><p class="fs-6">DATA DA COMPRA : <b><span  th:text="${Produtos.dataEntrada}" ></span></B>
+     				 </div>
+     			 <div class="col-3 mt-2"><p class="fs-6"> ID <b></b><span  th:text="${Produtos.sku}" ></span></b></p> </div>
+      			</div>
+      			
+      			<div class="row">
+     			 <div class="col-6 mt-2"><p class="fs-6">QUANTIDADE DISPONIVEL : <b><span  th:text="${Produtos.quantidadeEstoque}"></span></b></p></div> 
+			 <div class="col-6 mt-2"><p class="fs-6">VALOR DE COMPRA<b><span  th:text="${Produtos.valorCompra}"></span></b></p></div>
+ 					   </div>
+ </div>
+
+     </div>
+
+					
+					
+			<div class="col-3">
+							<div>
+								<img class="img-thumbnail " th:src = "${Produtos.urlImagem}" src=""/>
+							</div>
+						</div>
+						</div>	
+					
+							
+					
+					 
+			
+					<div class ="row m-1">
+					<div class="d-grid gap-3 d-md-block">
+					
+  					<button   class="btn btn-warning" type="button" ><a style="text-decoration:none; color: brown;" th:href="@{/produtos/{id}/editaproduto(id = ${Produtos.sku})}">Editar</a></button>		
+
+  					<button class="btn btn-danger "   type=""><a style="text-decoration:none; color: rgb(0, 0, 0);" th:href="@{/produtos/deletaProduto?deletaProduto={deletaProduto}(deletaProduto = ${Produtos.sku}) }">Remover</a></button>
+  					
+  					
+  					
+		
+</div>
+				
+		
+		
+		
+		 </div>
+   			
+					
+							
+				</div>
+		</div>
+		</div>
+
+		
+		
+	
+
+	</body>		
+</html>

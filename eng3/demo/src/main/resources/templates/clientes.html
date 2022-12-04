@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
+	
+<title>Insert title here</title>
+</head>
+<body>
+<div th:replace="~{menu :: menu}">
+	</div>
+	
+	
+	<form class="d-flex p-2" role="search" th:object="${buscaNome}"  action="/produtos/buscaNome" method="GET">
+      <input class="form-control " placeholder="CPF"  name="buscaNome">
+      <button class="btn btn-success" type="submit">Search</button>
+    </form>
+    
+<div class="card m-5 border-dark shadow-lg bg-body rounded">
+
+<div class="row m-5">
+<div class="col-2">
+<img class="img-thumbnail " src = "https://scontent.fgru6-1.fna.fbcdn.net/v/t39.30808-6/268259095_936334237320367_3446062582670697216_n.jpg?stp=c0.106.960.960a_dst-jpg_s851x315&_nc_cat=101&ccb=1-7&_nc_sid=da31f3&_nc_eui2=AeH7ueHCkUcN_RZKgzyz_35y45mUY4dWxh_jmZRjh1bGH4w44AG4cQsoOsBIncPVAhyxpJjAJfz8xhNX9XMWTL0w&_nc_ohc=svFtAdQTt-AAX97Jout&tn=a8BQqD9AbOuV4-s_&_nc_ht=scontent.fgru6-1.fna&oh=00_AfCueSVqOIBKdK5LPIbY8diROvIoXbBMYGHCdJChVBd_kA&oe=638E57B6" />
+</div>
+<div class="col-9">
+<div class="row ">
+<div class="col-3 ">
+<p class="fs-5">CPF: </p>
+<p class="fs-5">Nome: </p>
+<p class="fs-5">nascimento: </p>
+</div>
+<div class="col-3 ">
+<p class="fs-6">12345678910 </p>
+<p class="fs-6">Fulano da Silva Sauro </p>
+<p class="fs-6">11/12/2020</p>
+</div>
+<div class="col-3">
+
+<p class="fs-5 ">E-mail: </p>
+<p class="fs-5">telefone: </p>
+
+
+</div>
+<div class="col-3">
+
+<p class="fs-6">fulano@gmail.com</p>
+<p class="fs-6">(12)9 4567-8912</p>
+
+
+</div>
+
+
+</div>
+</div>
+
+
+</div>
+
+</div>
+<nav>
+  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+    <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Compras</button>
+    <button class="nav-link" id="nav-devolucao-tab" data-bs-toggle="tab" data-bs-target="#nav-devolucao" type="button" role="tab" aria-controls="nav-devolucao" aria-selected="false">Devoluções</button>
+      <button class="nav-link" id="nav-auditoria-tab" data-bs-toggle="tab" data-bs-target="#nav-auditoria" type="button" role="tab" aria-controls="nav-auditoria" aria-selected="true">Auditoria</button>
+  
+  </div>
+</nav>
+<div class="tab-content" id="nav-tabContent">
+  <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0"><!-- lista de produtos -->
+<div class="card text-bg-light m-5 border-dark shadow-lg bg-body rounded">
+<h5 class="card-header mb-2 ">Ultimos Ingredientes Cadastrados</h5>
+<form class="d-flex m-4" role="search">
+	<input class="form-control me-1" type="search" placeholder="Pesquisar..." aria-label="Search">
+  	<button class="btn btn-outline-success" type="submit">Pesquisar</button>
+</form>
+
+
+<div class="card m-4">
+<table class="table">
+  <thead class="table-dark ">
+    <tr>
+      <th scope="col">Id do pedido</th>
+      <th scope="col">Data</th>
+      <th scope="col">Quantidade de itens</th>
+      <th scope="col">Metodo de pagamento</th>
+      <th scope="col">Vendedor</th>
+      <th scope="col">Itens</th>
+     
+    </tr>
+  </thead>
+  <tbody class="table-group-divider ">
+    <tr>
+      <th scope="row">P02122022-1</th>
+      <td>02-12-2022 09:00</td>
+      <td>5</td>
+      <td>Dinheiro</td>
+      <td>Daniel</td>
+      <td><a href="#">ver detalhes</a></td>
+     </tr>
+     </tbody>
+     </table>
+     </div>
+    </div>
+</div></div>
+
+    <div class="tab-content" id="nav-tabContent">
+    
+     <div class="tab-pane fade" id="nav-devolucao" role="tabpanel" aria-labelledby="nav-devolucao-tab" tabindex="0"><!-- lista de produtos -->
+<div class="card text-bg-light m-5 border-dark shadow-lg bg-body rounded">
+<h5 class="card-header mb-2 ">Devoluções</h5>
+<form class="d-flex m-4" role="search">
+	<input class="form-control me-1" type="search" placeholder="Pesquisar..." aria-label="Search">
+  	<button class="btn btn-outline-success" type="submit">Pesquisar</button>
+</form>
+
+
+<div class="card m-4">
+<table class="table table-bordered border-dark ">
+  <thead class="table-dark ">
+    <tr>
+    <th scope="col">Data</th>
+      <th scope="col">Item devolvido</th>
+      <th scope="col">Motivo</th>
+       <th scope="col">Metodo de estorno</th>
+       
+
+     
+    </tr>
+  </thead>
+  <tbody class="table-group-divider ">
+    <tr >
+      <th scope="row "rowspan="2" >02/12/2022 21:03</th>
+      
+      
+      
+      <td>Skol 360ml 5un </td>
+      <td>produto vencido</td>
+      <td>Daniel</td>
+      
+     
+    </tr>
+    
+    
+    </tbody>
+    <tbody class="table-group-divider ">
+    <tr >
+      <th scope="row "rowspan="2" >02/12/2022 21:04</th>
+      
+      
+      
+      <td>corote</td>
+      <td>garrafa furada</td>
+      <td>gabriela</td>
+      
+     
+    </tr>
+    
+    
+    </tbody>
+    <tbody class="table-group-divider ">
+    <tr >
+      <th scope="row "rowspan="2" >02/12/2022 21:03</th>
+      
+      
+      
+      <td>Maracugina </td>
+      <td> sabor de limão inves de maracuja</td>
+      <td>Daniel</td>
+      
+     
+    </tr>
+    
+    
+    </tbody>
+    </table>
+    </div>
+    
+
+    </div>
+    
+    </div>
+  </div>
+  <div class="tab-content" id="nav-tabContent">
+  
+     <div class="tab-pane fade" id="nav-auditoria" role="tabpanel" aria-labelledby="nav-auditoria-tab" tabindex="0"><!-- lista de produtos -->
+<div class="card text-bg-light m-5 border-dark shadow-lg bg-body rounded">
+<h5 class="card-header mb-2 ">Modificações</h5>
+<form class="d-flex m-4" role="search">
+	<input class="form-control me-1" type="search" placeholder="Pesquisar..." aria-label="Search">
+  	<button class="btn btn-outline-success" type="submit">Pesquisar</button>
+</form>
+
+
+<div class="card m-4">
+<table class="table table-bordered border-dark ">
+  <thead class="table-dark ">
+    <tr>
+    <th scope="col">Quando?</th>
+      <th scope="col">Oque?</th>
+      <th scope="col">Novo Valor</th>
+       <th scope="col">Quem?</th>
+       
+
+     
+    </tr>
+  </thead>
+  <tbody class="table-group-divider ">
+    <tr >
+      <th scope="row "rowspan="2" >02/12/2022 21:03</th>
+      
+      
+      
+      <td>Alteração e-mail </td>
+      <td>fulano@gmail.com</td>
+      <td>Daniel</td>
+      
+     
+    </tr>
+    
+    
+    </tbody>
+    <tbody class="table-group-divider ">
+    <tr >
+      <th scope="row "rowspan="2" >02/12/2022 21:04</th>
+      
+      
+      
+      <td>Alteração Telefone </td>
+      <td>(12)9 4567-8912</td>
+      <td>Daniel</td>
+      
+     
+    </tr>
+    
+    
+    </tbody>
+    <tbody class="table-group-divider ">
+    <tr >
+      <th scope="row "rowspan="2" >02/12/2022 21:03</th>
+      
+      
+      
+      <td>Alteração Foto de Perfil </td>
+      <td></td>
+      <td>Daniel</td>
+      
+     
+    </tr>
+    
+    
+    </tbody>
+    </table>
+    </div>
+    </div>
+   
+    </div>
+   
+
+
+</div>
+
+</body>
+</html>

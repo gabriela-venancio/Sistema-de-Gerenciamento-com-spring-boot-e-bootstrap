@@ -1,0 +1,103 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8"/>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+	
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div th:replace="~{menu :: menu}">
+</div>
+
+
+	<div class="container mt-2">
+	<div class ="card shadow-none  bg-light rounded ">
+	<h3 class="card-header  ">Edição de produto</h3>
+  <div class="form-group" >
+ <form  th:object="${editaproduto}"  action="/produtos" method="POST" > 
+ 
+ 
+  <div>
+    <label class="form-label">ID</label>
+    <input   class="form-control" type="text" ><span  ></span>
+</div>
+  
+  
+  <div class="form-group">
+  
+    <label for="inputNome" class="form-label">Nome Do Produto</label>
+    <input  class="form-control col-6" type="text"> 
+	
+  </div>
+  
+	<div class="row">
+    <div class="mt-3 col-6">
+    <label for="inputtamanho" class="form-label">Tamanho</label>
+    <input   class="form-control"  type="text" >
+ 	</div>
+  
+    <div class=" mt-3 col-6">
+    <label for="inputcomposto" class="form-label">Composto</label>
+    <input class="form-control"  type="text" >
+ 	</div>
+  
+  </div>
+  
+  <div class="row">
+ <div class=" mt-3 col-6">
+    <label for="inputtipo" class="form-label">tipo</label>
+    <input class="form-control"  type="text" th:text="${valorCompra}">
+ 	</div>
+  
+  	<div class="mt-3 col-6">
+  		<label for="inputcategoria" class="form-label">categoria</label>
+  		<input class="form-control"  type="text" >
+	</div>
+  </div>
+  
+  <div class="row">
+  <div class=" mt-3 col-6">
+    <label for="inputvalorVenda" class="form-label">Valor </label>
+    <input  class="form-control"  type="text"  >
+  </div>
+  
+ <div class="mt-3 col-6">
+    <label for="inputsabor" class="form-label">Sabor</label>
+   <input class="form-control"  type="text" >
+ 
+  </div>
+  </div>
+ <div class=" mt-3">
+    <label for="inputurlImagem" class="form-label">Imagem </label>
+    <input  class="form-control" type="text" >
+  </div>
+
+<div class="row">
+ 
+  <div class=" mt-3 col-6">
+    <label for="inputestoque" class="form-label">Quantidade no Estoque</label>
+  <input  type="text"  class="form-control" >
+
+  </div>
+  <div class=" mt-3 col-6">
+    <label for="inputembalagem" class="form-label">embalagem</label>
+  <input class="form-control"  type="text" >
+</div>
+   </div>
+ <div class="modal-footer">
+        <a class="btn btn-primary mt-2" href="javascript:history.back()">Voltar</a>
+        <button type="submit" class="btn btn-primary mt-2">Editar</button>
+
+      </div>
+     
+</form>
+ </div>
+ </div>
+ </div>
+ <script crossorigin="anonymous"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

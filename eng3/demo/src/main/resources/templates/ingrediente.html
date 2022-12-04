@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
+	
+<title>Insert title here</title>
+</head>
+
+
+
+
+<body>
+<div th:replace="~{menu :: menu}">
+	</div>
+	
+	<!-- cadastro -->
+
+	<div class = "container">
+	
+		<div th:replace="~{cadastroIngrediente :: cadastro}">
+	</div>
+
+
+
+<nav>
+  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+    <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Ingredientes</button>
+    <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Produtos Compostos</button>
+  </div>
+</nav>
+<div class="tab-content" id="nav-tabContent">
+  <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0"><!-- lista de produtos -->
+<div class="card text-bg-light m-5 border-dark shadow-lg bg-body rounded">
+<h5 class="card-header mb-2 ">Ultimos Ingredientes Cadastrados</h5>
+<form class="d-flex m-4" role="search">
+	<input class="form-control me-1" type="search" placeholder="Pesquisar..." aria-label="Search">
+  	<button class="btn btn-outline-success" type="submit">Pesquisar</button>
+  
+  <div>
+  	<!-- Button trigger modal -->
+</div>
+</form>
+	<button type="button" class="btn btn-primary m-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+ Alterar Valor 
+</button>
+	<div th:replace="~{editaValor :: editaValor}">
+	</div>
+
+
+
+
+
+<div class="card m-4">
+<table class="table">
+  <thead class="table-dark ">
+    <tr>
+      <th scope="col">Codigo</th>
+      <th scope="col">Nome</th>
+      <th scope="col">Tipo</th>
+      <th scope="col">Categoria</th>
+      <th scope="col">Valor</th>
+      <th scope="col">Editar</th>
+	  <th scope="col">Remover</th>
+	     
+    </tr>
+  </thead>
+  <tbody class="table-group-divider ">
+    <tr th:each="Ingrediente : ${ingrediente}">
+    <th class="col-1" scope="row" th:text="${Ingrediente.codigoItem}">ID</th>
+      <td th:text="${Ingrediente.nomeIngrediente}">Agua de Coco</td>
+      <td th:text="${Ingrediente.tipo}">Suco</td>
+      <td th:text="${Ingrediente.categoria}">Doce</td>
+      <td th:text="${Ingrediente.valor}"><span th:text="${Ingrediente.valor}"></span> </td>
+         <td class="col-1"><a href="#" class="btn btn-success m-2">Editar</a> </td>
+         <td ><a class="btn btn-danger m-2" href=" #">Deletar</a></td>
+            
+    </tr>
+   
+  </tbody>
+</table>
+</div>
+</div></div>
+  <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0"><!-- lista de produtos -->
+<div class="card text-bg-light m-5 border-dark shadow-lg bg-body rounded">
+<h5 class="card-header mb-2 ">Ultimos Produtos Compostos Cadastrados</h5>
+<form class="d-flex m-4" role="search">
+	<input class="form-control me-1" type="search" placeholder="Pesquisar..." aria-label="Search">
+  	<button class="btn btn-outline-success" type="submit">Pesquisar</button>
+</form>
+
+
+<div class="card m-4">
+<table class="table table-striped  table-hover table-bordered border-dark">
+  <thead class="table-dark ">
+    <tr >
+      
+       <th scope="col">ID do Produto</th>
+       <th scope="col">Nome do Produto</th>
+       <th scope="col">Nome do Ingrediente</th>
+
+        <th scope="col">ID do Ingrediente</th>
+      
+      <th scope="col">Quantidade de ingrediente</th>
+     <th scope="col">Editar</th>
+     <th scope="col">remover</th>
+    </tr>
+  </thead>
+  <tbody class="table-group-divider ">
+            
+
+    <tr th:each="Ingrediente : ${ingrediente}">
+
+      <th th:text="${Ingrediente.codigoPorduto}" class="col-1" scope="row" ></th>
+      
+      <td  class="col-4" th:text="${Ingrediente.nomeProduto}"></td>
+      <td  class="col-2"th:text="${Ingrediente.nomeIngrediente}">Agua de Coco</td>
+      <td  class="col-2" th:text="${Ingrediente.codigoItem}"></td>
+      <td class="col-2" th:text="${Ingrediente.quantidade}"></td>
+   <td class="col-1"><a href="#" class="btn btn-success m-2">Editar</a> </td>
+         <td ><a class="btn btn-danger m-2" href=" #">Deletar</a></td>
+          
+
+    </tr>
+
+ 
+  </tbody>
+</table>
+</div>
+</div></div>
+  
+</div>
+
+
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
